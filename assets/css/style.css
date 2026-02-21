@@ -48,6 +48,7 @@
   --white-2: hsl(0, 0%, 98%);
   --orange-yellow-crayola: hsl(45, 100%, 72%);
   --vegas-gold: hsl(45, 54%, 58%);
+  --vegas-gold2:hsl(45, 94%, 51%);
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
   --bittersweet-shimmer: hsl(0, 43%, 51%);
@@ -213,8 +214,9 @@ article.active {
 .h4 { font-size: var(--fs-4); }
 
 .h4 {
-  color: var(--vegas-gold2);
-  text-transform: capitalize;}
+  color: var(--vegas-gold);
+  text-transform: capitalize;
+}
 .h5 {
   font-size: var(--fs-7);
   font-weight: var(--fw-500);
