@@ -50,8 +50,9 @@
   --vegas-gold: hsl(45, 54%, 58%);
   --vegas-gold2:hsl(45, 94%, 51%);
   --light-gray: hsl(0, 0%, 84%);
-  --light-gray-70: hsla(0, 0%, 84%, 0.7);
+  --light-gray-70: hsl(0, 0%, 84%);
   --bittersweet-shimmer: hsl(0, 43%, 51%);
+  --persian-blue: hsl(239, 54%, 29%);
 
   /**
    * typography
@@ -327,8 +328,8 @@ main {
 }
 
 .info-content .title {
-  color: var(--white-1);
-  background: var(--onyx);
+  color: var(--persian-blue);
+  background: var(--bittersweet-shimmer);
   font-size: var(--fs-8);
   font-weight: var(--fw-300);
   width: max-content;
@@ -400,6 +401,7 @@ main {
 .contact-title {
   color: var(--light-gray-70);
   font-size: var(--fs-8);
+  background: var(--fs-8);
   text-transform: uppercase;
   margin-bottom: 2px;
 }
