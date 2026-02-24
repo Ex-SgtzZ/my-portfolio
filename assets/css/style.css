@@ -70,6 +70,9 @@
   --fs-6: 14px;
   --fs-7: 13px;
   --fs-8: 11px;
+  --fs-9: 10px;
+  --fs-10: 9px;
+  --fs-11: 5px;
 
   /* font-weight */
   --fw-300: 300;
@@ -396,6 +399,7 @@ main {
 .contact-info {
   max-width: calc(100% - 46px);
   width: calc(100% - 46px);
+  
 }
 
 .contact-title {
@@ -408,7 +412,7 @@ main {
 
 .contact-info :is(.contact-link, time, address) {
   color: var(--white-2);
-  font-size: var(--fs-7);
+  font-size: var(--fs-9);
 }
 
 .contact-info address { font-style: normal; }
@@ -424,7 +428,7 @@ main {
 
 .social-item .social-link {
   color: var(--light-gray-70);
-  font-size: 12px;
+  font-size: 18px;
 }
 
 
