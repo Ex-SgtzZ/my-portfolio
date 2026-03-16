@@ -220,6 +220,10 @@ a .h4 {
   color: var(--vegas-gold2);
   text-transform: capitalize; 
 }
+p .h4 { 
+  color: var(--vegas-gold2);
+  text-transform: capitalize; 
+}
 .h5 {
   font-size: var(--fs-7);
   font-weight: var(--fw-500);
