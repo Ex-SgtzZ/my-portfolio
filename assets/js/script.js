@@ -55,6 +55,46 @@ overlay.addEventListener("click", testimonialsModalFunc);
 
 
 
+
+// blog modal variables
+const blogItems = document.querySelectorAll("[data-blog-item]");
+const blogModalContainer = document.querySelector("[data-blog-modal-container]");
+const blogModalCloseBtn = document.querySelector("[data-blog-modal-close-btn]");
+const blogOverlay = document.querySelector("[data-blog-overlay]");
+const blogModalImg = document.querySelector("[data-blog-modal-img]");
+const blogModalCategory = document.querySelector("[data-blog-modal-category]");
+const blogModalDate = document.querySelector("[data-blog-modal-date]");
+const blogModalTitle = document.querySelector("[data-blog-modal-title]");
+const blogModalText = document.querySelector("[data-blog-modal-text]");
+
+const blogModalFunc = function () {
+  blogModalContainer.classList.toggle("active");
+  blogOverlay.classList.toggle("active");
+}
+
+for (let i = 0; i < blogItems.length; i++) {
+  blogItems[i].addEventListener("click", function () {
+    const blogImg = this.querySelector("[data-blog-img]");
+    const blogCategory = this.querySelector("[data-blog-category]");
+    const blogDate = this.querySelector("[data-blog-date]");
+    const blogTitle = this.querySelector("[data-blog-title]");
+    const blogText = this.querySelector("[data-blog-text]");
+
+    blogModalImg.src = blogImg.src;
+    blogModalImg.alt = blogImg.alt;
+    blogModalCategory.textContent = blogCategory.textContent;
+    blogModalDate.textContent = blogDate.textContent;
+    blogModalDate.setAttribute("datetime", blogDate.getAttribute("datetime"));
+    blogModalTitle.textContent = blogTitle.textContent;
+    blogModalText.textContent = blogText.textContent;
+
+    blogModalFunc();
+  });
+}
+
+blogModalCloseBtn.addEventListener("click", blogModalFunc);
+blogOverlay.addEventListener("click", blogModalFunc);
+
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
