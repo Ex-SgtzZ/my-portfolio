@@ -68,8 +68,16 @@ const blogModalTitle = document.querySelector("[data-blog-modal-title]");
 const blogModalText = document.querySelector("[data-blog-modal-text]");
 
 const getThreeSentencePreview = function (text) {
-  const sentences = text.match(/[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g) || [text];
-  return sentences.slice(0, 3).join(" ").trim();
+  const maxPreviewChars = 180;
+  const normalizedText = text.replace(/\s+/g, " ").trim();
+  const sentences = normalizedText.match(/[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g) || [normalizedText];
+  const sentencePreview = sentences.slice(0, 3).join(" ").trim();
+
+  if (sentencePreview.length <= maxPreviewChars) {
+    return sentencePreview;
+  }
+
+  return sentencePreview.slice(0, maxPreviewChars).trimEnd() + "...";
 }
 
 const blogTextBlocks = document.querySelectorAll("[data-blog-text]");
