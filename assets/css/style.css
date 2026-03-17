@@ -1118,7 +1118,7 @@ main {
   line-height: 1.6;
 }
 
-.blog-post-item .blog-text {
+.blog-preview-text {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
