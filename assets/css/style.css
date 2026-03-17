@@ -1119,7 +1119,7 @@ main {
 }
 
 .blog-preview-text {
-  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 
