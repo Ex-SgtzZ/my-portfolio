@@ -55,6 +55,63 @@ overlay.addEventListener("click", testimonialsModalFunc);
 
 
 
+
+// blog modal variables
+const blogItems = document.querySelectorAll("[data-blog-item]");
+const blogModalContainer = document.querySelector("[data-blog-modal-container]");
+const blogModalCloseBtn = document.querySelector("[data-blog-modal-close-btn]");
+const blogOverlay = document.querySelector("[data-blog-overlay]");
+const blogModalImg = document.querySelector("[data-blog-modal-img]");
+const blogModalCategory = document.querySelector("[data-blog-modal-category]");
+const blogModalDate = document.querySelector("[data-blog-modal-date]");
+const blogModalTitle = document.querySelector("[data-blog-modal-title]");
+const blogModalText = document.querySelector("[data-blog-modal-text]");
+const blogModalExpandBtn = document.querySelector("[data-blog-modal-expand-btn]");
+
+const resetBlogModalState = function () {
+  const blogModal = blogModalContainer.querySelector(".blog-modal");
+  blogModal.classList.remove("expanded");
+  blogModalExpandBtn.querySelector("span").textContent = "Expand";
+}
+
+const blogModalFunc = function () {
+  blogModalContainer.classList.toggle("active");
+  blogOverlay.classList.toggle("active");
+
+  if (!blogModalContainer.classList.contains("active")) {
+    resetBlogModalState();
+  }
+}
+
+for (let i = 0; i < blogItems.length; i++) {
+  blogItems[i].addEventListener("click", function () {
+    const blogImg = this.querySelector("[data-blog-img]");
+    const blogCategory = this.querySelector("[data-blog-category]");
+    const blogDate = this.querySelector("[data-blog-date]");
+    const blogTitle = this.querySelector("[data-blog-title]");
+    const blogText = this.querySelector("[data-blog-text]");
+
+    blogModalImg.src = blogImg.src;
+    blogModalImg.alt = blogImg.alt;
+    blogModalCategory.textContent = blogCategory.textContent;
+    blogModalDate.textContent = blogDate.textContent;
+    blogModalDate.setAttribute("datetime", blogDate.getAttribute("datetime"));
+    blogModalTitle.textContent = blogTitle.textContent;
+    blogModalText.textContent = blogText.textContent;
+
+    resetBlogModalState();
+    blogModalFunc();
+  });
+}
+
+blogModalCloseBtn.addEventListener("click", blogModalFunc);
+blogOverlay.addEventListener("click", blogModalFunc);
+blogModalExpandBtn.addEventListener("click", function () {
+  const blogModal = blogModalContainer.querySelector(".blog-modal");
+  const isExpanded = blogModal.classList.toggle("expanded");
+  this.querySelector("span").textContent = isExpanded ? "Collapse" : "Expand";
+});
+
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");

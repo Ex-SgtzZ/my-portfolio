@@ -790,31 +790,31 @@
           <ul class="blog-posts-list">
 
             <li class="blog-post-item">
-              <a href="#">
+              <button class="blog-post-card" type="button" data-blog-item>
 
                 <figure class="blog-banner-box">
-                  <img src="https://i.ibb.co/GQH5sSVn/hacker.webp" alt="Mass Certifications" loading="lazy">
+                  <img src="https://i.ibb.co/GQH5sSVn/hacker.webp" alt="Mass Certifications" loading="lazy" data-blog-img>
                 </figure>
 
                 <div class="blog-content">
 
                   <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+                    <p class="blog-category" data-blog-category>Design</p>
 
                     <span class="dot"></span>
 
-                    <time datetime="2025-10-14">Oct 14, 2025</time>
+                    <time datetime="2025-10-14" data-blog-date>Oct 14, 2025</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title">Certifications of 2025</h3>
+                  <h3 class="h3 blog-item-title" data-blog-title>Certifications of 2025</h3>
 
-                  <p class="blog-text">
+                  <p class="blog-text" data-blog-text>
                     During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
                   </p>
 
                 </div>
 
-              </a>
+              </button>
             </li>
 
           </ul>
@@ -822,6 +822,46 @@
         </section>
 
       </article>
+
+      <div class="modal-container" data-blog-modal-container>
+
+        <div class="overlay" data-blog-overlay></div>
+
+        <section class="blog-modal">
+
+          <button class="modal-close-btn" data-blog-modal-close-btn>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <figure class="blog-modal-banner-box">
+            <img src="https://i.ibb.co/GQH5sSVn/hacker.webp" alt="Mass Certifications" loading="lazy" data-blog-modal-img>
+          </figure>
+
+          <div class="blog-modal-content">
+
+            <div class="blog-meta">
+              <p class="blog-category" data-blog-modal-category>Design</p>
+
+              <span class="dot"></span>
+
+              <time datetime="2025-10-14" data-blog-modal-date>Oct 14, 2025</time>
+            </div>
+
+            <h3 class="h3 blog-item-title" data-blog-modal-title>Certifications of 2025</h3>
+
+            <p class="blog-text" data-blog-modal-text>
+              During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+            </p>
+
+            <button class="form-btn blog-modal-expand-btn" type="button" data-blog-modal-expand-btn>
+              <span>Expand</span>
+            </button>
+
+          </div>
+
+        </section>
+
+      </div>
 
       <!--
         - #CONTACT
