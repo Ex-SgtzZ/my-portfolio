@@ -67,6 +67,18 @@ const blogModalDate = document.querySelector("[data-blog-modal-date]");
 const blogModalTitle = document.querySelector("[data-blog-modal-title]");
 const blogModalText = document.querySelector("[data-blog-modal-text]");
 
+const getThreeSentencePreview = function (text) {
+  const sentences = text.match(/[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g) || [text];
+  return sentences.slice(0, 3).join(" ").trim();
+}
+
+const blogTextBlocks = document.querySelectorAll("[data-blog-text]");
+for (let i = 0; i < blogTextBlocks.length; i++) {
+  const fullText = blogTextBlocks[i].textContent.trim();
+  blogTextBlocks[i].setAttribute("data-blog-full-text", fullText);
+  blogTextBlocks[i].textContent = getThreeSentencePreview(fullText);
+}
+
 const blogModalFunc = function () {
   blogModalContainer.classList.toggle("active");
   blogOverlay.classList.toggle("active");
@@ -86,7 +98,7 @@ for (let i = 0; i < blogItems.length; i++) {
     blogModalDate.textContent = blogDate.textContent;
     blogModalDate.setAttribute("datetime", blogDate.getAttribute("datetime"));
     blogModalTitle.textContent = blogTitle.textContent;
-    blogModalText.textContent = blogText.textContent;
+    blogModalText.textContent = blogText.getAttribute("data-blog-full-text");
 
     blogModalFunc();
   });
