@@ -314,7 +314,7 @@
 
               <div data-modal-text>
                 <p>
-                  this portfolio is a template that I am using while I build my own portfolio from scratch.   
+                  this portfolio is a template that I am using while I build my own portfolio from scratch.
                 </p>
               </div>
 
@@ -339,25 +339,25 @@
                 <img src="./assets/images/no.png" alt="client logo">
               </a>
             </li>
-           
+
             <li class="clients-item">
               <a href="#">
                 <img src="./assets/images/no.png" alt="client logo">
               </a>
             </li>
-           
+
             <li class="clients-item">
               <a href="#">
                 <img src="./assets/images/no.png" alt="client logo">
               </a>
             </li>
-           
+
             <li class="clients-item">
               <a href="#">
                 <img src="./assets/images/no.png" alt="client logo">
               </a>
             </li>
-            
+
             <li class="clients-item">
               <a href="#">
                 <img src="./assets/images/no.png" alt="client logo">
@@ -366,6 +366,7 @@
           </ul>
 
         </section>
+
 
       </article>
 
@@ -503,14 +504,12 @@
           <h2 class="h2 article-title">Portfolio</h2>
         </header>
 
-        <div class="portfolio-subtabs">
-          <button class="portfolio-subtab-btn active" type="button" data-portfolio-tab-btn data-target="work-showcase">Work Showcase</button>
-          <button class="portfolio-subtab-btn" type="button" data-portfolio-tab-btn data-target="tech-stack">Tech Stack</button>
+        <div class="portfolio-tabs" role="tablist" aria-label="Portfolio sections">
+          <button class="portfolio-tab-btn active" type="button" data-portfolio-tab="work">Work Showcase</button>
+          <button class="portfolio-tab-btn" type="button" data-portfolio-tab="skills">Tech Stack</button>
         </div>
 
-        <section class="portfolio-subtab-panel active" data-portfolio-tab-panel="work-showcase">
-
-        <section class="projects">
+        <section class="projects portfolio-panel active" data-portfolio-panel="work">
 
           <ul class="filter-list">
 
@@ -668,10 +667,10 @@
 
                 <p class="project-category">Certifications</p>
 
-                
+
               </a>
             </li>
-           
+
             <li class="project-item  active" data-filter-item data-category="certifications">
               <a href="https://www.freecodecamp.org/certification/zjones28/b1-english-for-developers">
 
@@ -688,10 +687,10 @@
 
                 <p class="project-category">Certifications</p>
 
-                
+
               </a>
             </li>
-            
+
             <!--Previous Certs Certs-->
             <li class="project-item  active" data-filter-item data-category="legacy certifications">
               <a href="https://www.freecodecamp.org/certification/zjones28/responsive-web-design">
@@ -713,14 +712,14 @@
               </a>
             </li>
             <li class="project-item  active" data-filter-item data-category="certifications">
-              <a href="#">
+              <a href="https://www.freecodecamp.org/certification/zjones28/front-end-development-libraries">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="https://i.ibb.co/RpKjVnhC/Frontend-Development-Libs.png" alt="Frontend Development Libraries link" loading="lazy">
+                  <img src="https://i.ibb.co/B5ZDNyw4/Frontend-Development-Libs.png" alt="Frontend Development Libraries link" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Frontend Development Libraries V8</h3>
@@ -739,7 +738,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="https://i.ibb.co/HfrBy0sT/data-Vis.png" alt="Data Visualization link" loading="lazy">
+                  <img src="https://i.ibb.co/hR4DcZ9J/data-Vis.png" alt="Data Visualization link" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Data Visualization V8</h3>
@@ -747,10 +746,10 @@
 
                 <p class="project-category">Certifications</p>
 
-                
+
               </a>
             </li>
-          
+
             <li class="project-item  active" data-filter-item data-category="projects">
               <a href="#">
 
@@ -768,37 +767,59 @@
 
               </a>
             </li>
-          
-          
+
+
           </ul>
 
         </section>
 
-        </section>
 
-        <section class="portfolio-subtab-panel" data-portfolio-tab-panel="tech-stack">
-          <div class="content-card tech-stack-card">
-            <h3 class="h3 tech-stack-title">Tech Stack</h3>
-            <div class="tech-stack-grid">
-              <div class="tech-stack-item">
-                <h4 class="h4">Frontend</h4>
-                <p>HTML, CSS, JavaScript, Responsive Design</p>
-              </div>
-              <div class="tech-stack-item">
-                <h4 class="h4">Backend</h4>
-                <p>Node.js, APIs, Auth Flows, Validation</p>
-              </div>
-              <div class="tech-stack-item">
-                <h4 class="h4">Tools</h4>
-                <p>Git/GitHub, VS Code, DevTools, CI basics</p>
-              </div>
-            </div>
+
+        <section class="tech-stack portfolio-panel" data-portfolio-panel="skills">
+
+          <h3 class="h3 tech-stack-title">Technical Skills</h3>
+
+          <div class="tech-stack-group">
+            <h4 class="h4 tech-stack-subtitle">Frontend Development</h4>
+            <ul class="tech-stack-list">
+              <li class="tech-item">
+                <div class="tech-icon react">⚛</div>
+                <p class="tech-name">React</p>
+              </li>
+              <li class="tech-item">
+                <div class="tech-icon vue">V</div>
+                <p class="tech-name">Vue</p>
+              </li>
+              <li class="tech-item">
+                <div class="tech-icon ts">TS</div>
+                <p class="tech-name">TypeScript</p>
+              </li>
+            </ul>
           </div>
+
+          <div class="tech-stack-group">
+            <h4 class="h4 tech-stack-subtitle">Backend Development</h4>
+            <ul class="tech-stack-list">
+              <li class="tech-item">
+                <div class="tech-icon node">N</div>
+                <p class="tech-name">Node.js</p>
+              </li>
+              <li class="tech-item">
+                <div class="tech-icon python">Py</div>
+                <p class="tech-name">Python</p>
+              </li>
+              <li class="tech-item">
+                <div class="tech-icon java">J</div>
+                <p class="tech-name">Java</p>
+              </li>
+            </ul>
+          </div>
+
         </section>
 
       </article>
 
-            
+
 
 
 
@@ -816,34 +837,36 @@
 
           <ul class="blog-posts-list">
 
-            <li class="blog-post-item" data-blog-item>
-              <article class="blog-post-card">
+            <li class="blog-post-item">
+              <button class="blog-post-card" type="button" data-blog-item>
 
                 <figure class="blog-banner-box">
-                  <img src="https://i.ibb.co/GQH5sSVn/hacker.webp" alt="Mass Certifications" loading="lazy">
+                  <img src="https://i.ibb.co/GQH5sSVn/hacker.webp" alt="Mass Certifications" loading="lazy" data-blog-img>
                 </figure>
 
                 <div class="blog-content">
 
                   <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+                    <p class="blog-category" data-blog-category>Design</p>
 
                     <span class="dot"></span>
 
-                    <time datetime="2025-10-14">Oct 14, 2025</time>
+                    <time datetime="2025-10-14" data-blog-date>Oct 14, 2025</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title">Certifications of 2025</h3>
+                  <h3 class="h3 blog-item-title" data-blog-title>Certifications of 2025</h3>
 
-                  <p class="blog-text" data-blog-text>
+                  <p class="blog-text blog-preview-text" data-blog-text>
                     During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+
                   </p>
 
                   <button class="blog-read-more-btn" type="button" data-blog-open-btn>Read more</button>
 
                 </div>
 
-              </article>
+              </button>
             </li>
 
           </ul>
@@ -852,18 +875,54 @@
 
       </article>
 
-      <div class="blog-modal-container" data-blog-modal-container>
-        <div class="blog-overlay" data-blog-overlay></div>
+      <div class="modal-container" data-blog-modal-container>
+
+        <div class="overlay" data-blog-overlay></div>
+
         <section class="blog-modal">
+
           <button class="modal-close-btn" data-blog-modal-close-btn>
             <ion-icon name="close-outline"></ion-icon>
           </button>
-          <div class="modal-content">
-            <h5 class="h5 modal-title" data-blog-modal-title>Blog Post</h5>
-            <p class="blog-modal-text" data-blog-modal-text></p>
-            <button class="blog-read-more-btn modal-read-more-btn" type="button" data-blog-modal-read-more-btn>Read more</button>
+
+          <figure class="blog-modal-banner-box">
+            <img src="https://i.ibb.co/GQH5sSVn/hacker.webp" alt="Mass Certifications" loading="lazy" data-blog-modal-img>
+          </figure>
+
+          <div class="blog-modal-content">
+
+            <div class="blog-meta">
+              <p class="blog-category" data-blog-modal-category>Design</p>
+
+              <span class="dot"></span>
+
+              <time datetime="2025-10-14" data-blog-modal-date>Oct 14, 2025</time>
+            </div>
+
+            <h3 class="h3 blog-item-title" data-blog-modal-title>Certifications of 2025</h3>
+
+            <p class="blog-text" data-blog-modal-text>
+          q         During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.            </p>
+
+
           </div>
+
         </section>
+
       </div>
 
       <!--
@@ -889,7 +948,7 @@
           <h3 class="h3 form-title">Contact Form</h3>
 
           <form   action="https://formspree.io/f/mrearqzy" method="POST" class="form" data-form>
-            
+
             <div class="input-wrapper">
               <input type="email" name="email" class="form-input" placeholder="dumpsterdiver12342@example.com" required data-form-input>
             </div>
