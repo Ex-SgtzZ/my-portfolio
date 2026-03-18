@@ -1,5 +1,56 @@
 'use strict';
 
+const techStackGroups = [
+  {
+    title: "Frontend Development",
+    items: [
+      { icon: "⚛", name: "React", iconClass: "react" },
+      { icon: "V", name: "Vue", iconClass: "vue" },
+      { icon: "TS", name: "TypeScript", iconClass: "ts" }
+    ]
+  },
+  {
+    title: "Backend Development",
+    items: [
+      { icon: "N", name: "Node.js", iconClass: "node" },
+      { icon: "Py", name: "Python", iconClass: "python" },
+      { icon: "J", name: "Java", iconClass: "java" }
+    ]
+  }
+];
+
+const renderTechStack = function () {
+  const techStackRoot = document.querySelector("[data-tech-stack]");
+
+  if (!techStackRoot) {
+    return;
+  }
+
+  const groupsHtml = techStackGroups.map(function (group) {
+    const itemsHtml = group.items.map(function (item) {
+      return `
+        <li class="tech-item">
+          <div class="tech-icon ${item.iconClass}" aria-hidden="true">${item.icon}</div>
+          <p class="tech-name">${item.name}</p>
+        </li>
+      `;
+    }).join("");
+
+    return `
+      <div class="tech-stack-group">
+        <h4 class="h4 tech-stack-subtitle">${group.title}</h4>
+        <ul class="tech-stack-list">
+          ${itemsHtml}
+        </ul>
+      </div>
+    `;
+  }).join("");
+
+  techStackRoot.innerHTML = groupsHtml;
+}
+
+renderTechStack();
+
 
 
 // element toggle function

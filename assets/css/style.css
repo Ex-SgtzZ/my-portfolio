@@ -1075,11 +1075,25 @@ main {
 }
 
 .tech-item {
+  position: relative;
   text-align: center;
   background: var(--eerie-black-1);
   border: 1px solid var(--jet);
   border-radius: 14px;
   padding: 16px 10px;
+  transition: transform 280ms ease, border-color 280ms ease, box-shadow 280ms ease;
+  will-change: transform;
+}
+
+.tech-item:hover {
+  border-color: var(--orange-yellow-crayola);
+  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.22);
+  animation: techFloat 1.9s ease-in-out infinite;
+}
+
+.tech-item:focus-within {
+  border-color: var(--orange-yellow-crayola);
+  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.22);
 }
 
 .tech-icon {
@@ -1103,6 +1117,21 @@ main {
 .tech-name {
   font-size: var(--fs-6);
   color: var(--white-2);
+}
+
+@keyframes techFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-item,
+  .tech-item:hover {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
 }
 
 @media (max-width: 480px) {
