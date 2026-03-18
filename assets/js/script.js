@@ -113,6 +113,111 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 }
 
+// portfolio sub-tab variables
+const portfolioTabBtns = document.querySelectorAll("[data-portfolio-tab-btn]");
+const portfolioPanels = document.querySelectorAll("[data-portfolio-tab-panel]");
+
+for (let i = 0; i < portfolioTabBtns.length; i++) {
+  portfolioTabBtns[i].addEventListener("click", function () {
+    const target = this.dataset.target;
+
+    for (let j = 0; j < portfolioTabBtns.length; j++) {
+      portfolioTabBtns[j].classList.remove("active");
+    }
+
+    for (let j = 0; j < portfolioPanels.length; j++) {
+      const isTarget = portfolioPanels[j].dataset.portfolioTabPanel === target;
+      portfolioPanels[j].classList.toggle("active", isTarget);
+    }
+
+    this.classList.add("active");
+  });
+}
+
+// blog modal variables
+const blogItems = document.querySelectorAll("[data-blog-item]");
+const blogOpenBtns = document.querySelectorAll("[data-blog-open-btn]");
+const blogModalContainer = document.querySelector("[data-blog-modal-container]");
+const blogModalCloseBtn = document.querySelector("[data-blog-modal-close-btn]");
+const blogOverlay = document.querySelector("[data-blog-overlay]");
+const blogModalTitle = document.querySelector("[data-blog-modal-title]");
+const blogModalText = document.querySelector("[data-blog-modal-text]");
+const blogModalReadMoreBtn = document.querySelector("[data-blog-modal-read-more-btn]");
+
+const BLOG_PREVIEW_LENGTH = 90;
+const BLOG_MODAL_PREVIEW_LENGTH = 220;
+let activeBlogFullText = "";
+let isBlogModalExpanded = false;
+
+const makeBlogSnippet = function (text, limit) {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  if (normalized.length <= limit) return normalized;
+  return `${normalized.slice(0, limit).trimEnd()}...`;
+}
+
+const updateBlogModalContent = function () {
+  if (isBlogModalExpanded) {
+    blogModalText.textContent = activeBlogFullText;
+    blogModalReadMoreBtn.textContent = "Show less";
+  } else {
+    blogModalText.textContent = makeBlogSnippet(activeBlogFullText, BLOG_MODAL_PREVIEW_LENGTH);
+    blogModalReadMoreBtn.textContent = "Read more";
+  }
+}
+
+const closeBlogModal = function () {
+  if (!blogModalContainer) return;
+  blogModalContainer.classList.remove("active");
+  isBlogModalExpanded = false;
+}
+
+const openBlogModal = function (item) {
+  if (!item || !blogModalContainer) return;
+
+  const titleElement = item.querySelector(".blog-item-title");
+  const textElement = item.querySelector("[data-blog-text]");
+
+  activeBlogFullText = textElement?.dataset.blogFullText || textElement?.textContent || "";
+  blogModalTitle.textContent = titleElement?.textContent || "Blog Post";
+  isBlogModalExpanded = false;
+  updateBlogModalContent();
+  blogModalContainer.classList.add("active");
+}
+
+for (let i = 0; i < blogItems.length; i++) {
+  const textElement = blogItems[i].querySelector("[data-blog-text]");
+  const fullText = textElement?.dataset.blogFullText || textElement?.textContent || "";
+
+  if (textElement) {
+    textElement.dataset.blogFullText = fullText.replace(/\s+/g, " ").trim();
+
+    if (!textElement.textContent.trim()) {
+      textElement.textContent = makeBlogSnippet(textElement.dataset.blogFullText, BLOG_PREVIEW_LENGTH);
+    }
+  }
+
+}
+
+for (let i = 0; i < blogOpenBtns.length; i++) {
+  blogOpenBtns[i].addEventListener("click", function (event) {
+    event.preventDefault();
+    openBlogModal(this.closest("[data-blog-item]"));
+  });
+}
+
+if (blogModalReadMoreBtn) {
+  blogModalReadMoreBtn.addEventListener("click", function () {
+    isBlogModalExpanded = !isBlogModalExpanded;
+    updateBlogModalContent();
+  });
+}
+
+if (blogModalCloseBtn) blogModalCloseBtn.addEventListener("click", closeBlogModal);
+if (blogOverlay) blogOverlay.addEventListener("click", closeBlogModal);
+window.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") closeBlogModal();
+});
+
 
 
 // contact form variables
