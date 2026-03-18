@@ -55,6 +55,98 @@ overlay.addEventListener("click", testimonialsModalFunc);
 
 
 
+
+// blog modal variables
+const blogItems = document.querySelectorAll("[data-blog-item]");
+const blogModalContainer = document.querySelector("[data-blog-modal-container]");
+const blogModalCloseBtn = document.querySelector("[data-blog-modal-close-btn]");
+const blogOverlay = document.querySelector("[data-blog-overlay]");
+const blogModalImg = document.querySelector("[data-blog-modal-img]");
+const blogModalCategory = document.querySelector("[data-blog-modal-category]");
+const blogModalDate = document.querySelector("[data-blog-modal-date]");
+const blogModalTitle = document.querySelector("[data-blog-modal-title]");
+const blogModalText = document.querySelector("[data-blog-modal-text]");
+
+const getShortPreview = function (text) {
+  const maxPreviewChars = 90;
+  const normalizedText = text.replace(/\s+/g, " ").trim();
+
+  if (normalizedText.length <= maxPreviewChars) {
+    return normalizedText;
+  }
+
+  return normalizedText.slice(0, maxPreviewChars).trimEnd() + "...";
+}
+
+const blogTextBlocks = document.querySelectorAll("[data-blog-text]");
+for (let i = 0; i < blogTextBlocks.length; i++) {
+  const fullText = blogTextBlocks[i].textContent.trim();
+  blogTextBlocks[i].setAttribute("data-blog-full-text", fullText);
+  blogTextBlocks[i].textContent = getShortPreview(fullText);
+}
+
+const blogModalFunc = function () {
+  blogModalContainer.classList.toggle("active");
+  blogOverlay.classList.toggle("active");
+}
+
+const openBlogModal = function (blogItem) {
+  const blogImg = blogItem.querySelector("[data-blog-img]");
+  const blogCategory = blogItem.querySelector("[data-blog-category]");
+  const blogDate = blogItem.querySelector("[data-blog-date]");
+  const blogTitle = blogItem.querySelector("[data-blog-title]");
+  const blogText = blogItem.querySelector("[data-blog-text]");
+
+  blogModalImg.src = blogImg.src;
+  blogModalImg.alt = blogImg.alt;
+  blogModalCategory.textContent = blogCategory.textContent;
+  blogModalDate.textContent = blogDate.textContent;
+  blogModalDate.setAttribute("datetime", blogDate.getAttribute("datetime"));
+  blogModalTitle.textContent = blogTitle.textContent;
+  blogModalText.textContent = blogText.getAttribute("data-blog-full-text");
+
+  blogModalFunc();
+}
+
+for (let i = 0; i < blogItems.length; i++) {
+  blogItems[i].addEventListener("click", function () {
+    openBlogModal(this);
+  });
+
+  const blogOpenBtn = blogItems[i].querySelector("[data-blog-open-btn]");
+  blogOpenBtn.addEventListener("click", function (event) {
+    event.stopPropagation();
+    openBlogModal(blogItems[i]);
+  });
+}
+
+blogModalCloseBtn.addEventListener("click", blogModalFunc);
+blogOverlay.addEventListener("click", blogModalFunc);
+
+// portfolio tab variables
+const portfolioTabButtons = document.querySelectorAll("[data-portfolio-tab]");
+const portfolioPanels = document.querySelectorAll("[data-portfolio-panel]");
+
+for (let i = 0; i < portfolioTabButtons.length; i++) {
+  portfolioTabButtons[i].addEventListener("click", function () {
+    const selectedPanel = this.dataset.portfolioTab;
+
+    for (let j = 0; j < portfolioTabButtons.length; j++) {
+      portfolioTabButtons[j].classList.remove("active");
+    }
+
+    for (let j = 0; j < portfolioPanels.length; j++) {
+      if (portfolioPanels[j].dataset.portfolioPanel === selectedPanel) {
+        portfolioPanels[j].classList.add("active");
+      } else {
+        portfolioPanels[j].classList.remove("active");
+      }
+    }
+
+    this.classList.add("active");
+  });
+}
+
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
