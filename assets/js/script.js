@@ -51,6 +51,29 @@ const renderTechStack = function () {
 
 renderTechStack();
 
+const portfolioTabButtons = document.querySelectorAll("[data-portfolio-tab]");
+const portfolioPanels = document.querySelectorAll("[data-portfolio-panel]");
+
+for (let i = 0; i < portfolioTabButtons.length; i++) {
+  portfolioTabButtons[i].addEventListener("click", function () {
+    const activeTab = this.dataset.portfolioTab;
+
+    for (let j = 0; j < portfolioTabButtons.length; j++) {
+      portfolioTabButtons[j].classList.remove("active");
+    }
+
+    for (let j = 0; j < portfolioPanels.length; j++) {
+      if (portfolioPanels[j].dataset.portfolioPanel === activeTab) {
+        portfolioPanels[j].classList.add("active");
+      } else {
+        portfolioPanels[j].classList.remove("active");
+      }
+    }
+
+    this.classList.add("active");
+  });
+}
+
 
 
 // element toggle function
