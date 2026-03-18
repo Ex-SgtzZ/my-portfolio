@@ -249,6 +249,8 @@
 
           </ul>
 
+          </div>
+
         </section>
 
 
@@ -280,6 +282,8 @@
             </li>
 
           </ul>
+
+          </div>
 
         </section>
 
@@ -314,7 +318,7 @@
 
               <div data-modal-text>
                 <p>
-                  this portfolio is a template that I am using while I build my own portfolio from scratch.   
+                  this portfolio is a template that I am using while I build my own portfolio from scratch.
                 </p>
               </div>
 
@@ -339,25 +343,25 @@
                 <img src="./assets/images/no.png" alt="client logo">
               </a>
             </li>
-           
+
             <li class="clients-item">
               <a href="#">
                 <img src="./assets/images/no.png" alt="client logo">
               </a>
             </li>
-           
+
             <li class="clients-item">
               <a href="#">
                 <img src="./assets/images/no.png" alt="client logo">
               </a>
             </li>
-           
+
             <li class="clients-item">
               <a href="#">
                 <img src="./assets/images/no.png" alt="client logo">
               </a>
             </li>
-            
+
             <li class="clients-item">
               <a href="#">
                 <img src="./assets/images/no.png" alt="client logo">
@@ -366,6 +370,7 @@
           </ul>
 
         </section>
+
 
       </article>
 
@@ -505,7 +510,32 @@
 
         <section class="projects">
 
-          <ul class="filter-list">
+          <div class="work-showcase-shell">
+
+            <div class="work-showcase-header content-card">
+              <h3 class="h3">Work Showcase</h3>
+              <p class="work-showcase-text">Browse my certifications and project work by category. Use filters to jump between current certifications, legacy achievements, and project builds.</p>
+
+              <ul class="work-showcase-metrics">
+                <li>
+                  <span class="metric-number" data-metric-certifications>0</span>
+                  <span class="metric-label">Certifications</span>
+                </li>
+                <li>
+                  <span class="metric-number" data-metric-project-tracks>0</span>
+                  <span class="metric-label">Project Tracks</span>
+                </li>
+                <li>
+                  <span class="metric-number" data-metric-recent-timeline>—</span>
+                  <span class="metric-label">Recent Timeline</span>
+                </li>
+              </ul>
+
+              <p class="work-showcase-updated" data-work-showcase-updated>Last updated: —</p>
+            </div>
+
+            <div class="work-filter-wrap">
+              <ul class="filter-list">
 
             <li class="filter-item">
               <button class="active" data-filter-btn>All</button>
@@ -566,8 +596,9 @@
             </ul>
 
           </div>
+            </div>
 
-          <ul class="project-list">
+            <ul class="project-list">
 
             <li class="project-item  active" data-filter-item data-category="certifications">
               <a href="https://www.freecodecamp.org/certification/zjones28/a2-english-for-developers">
@@ -661,10 +692,10 @@
 
                 <p class="project-category">Certifications</p>
 
-                
+
               </a>
             </li>
-           
+
             <li class="project-item  active" data-filter-item data-category="certifications">
               <a href="https://www.freecodecamp.org/certification/zjones28/b1-english-for-developers"
 
@@ -681,10 +712,10 @@
 
                 <p class="project-category">Certifications</p>
 
-                
+
               </a>
             </li>
-            
+
             <!--Previous Certs Certs-->
 
             </li>
@@ -742,10 +773,10 @@
 
                 <p class="project-category">Certifications</p>
 
-                
+
               </a>
             </li>
-          
+
             <li class="project-item  active" data-filter-item data-category="projects">
               <a href="#">
 
@@ -763,15 +794,19 @@
 
               </a>
             </li>
-          
-          
+
+
           </ul>
+
+          </div>
 
         </section>
 
-      </article>
 
-            
+
+
+
+      </article>
 
 
 
@@ -790,31 +825,33 @@
           <ul class="blog-posts-list">
 
             <li class="blog-post-item">
-              <a href="#">
+              <div class="blog-post-card" data-blog-item>
 
                 <figure class="blog-banner-box">
-                  <img src="https://i.ibb.co/GQH5sSVn/hacker.webp" alt="Mass Certifications" loading="lazy">
+                  <img src="https://i.ibb.co/GQH5sSVn/hacker.webp" alt="Mass Certifications" loading="lazy" data-blog-img>
                 </figure>
 
                 <div class="blog-content">
 
                   <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+                    <p class="blog-category" data-blog-category>Design</p>
 
                     <span class="dot"></span>
 
-                    <time datetime="2025-10-14">Oct 14, 2025</time>
+                    <time datetime="2025-10-14" data-blog-date>Oct 14, 2025</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title">Certifications of 2025</h3>
+                  <h3 class="h3 blog-item-title" data-blog-title>Certifications of 2025</h3>
 
-                  <p class="blog-text">
+                  <p class="blog-text blog-preview-text" data-blog-text>
                     During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
                   </p>
 
+                  <button class="blog-read-more-btn" type="button" data-blog-open-btn>Read more</button>
+
                 </div>
 
-              </a>
+              </div>
             </li>
 
           </ul>
@@ -822,6 +859,43 @@
         </section>
 
       </article>
+
+      <div class="modal-container" data-blog-modal-container>
+
+        <div class="overlay" data-blog-overlay></div>
+
+        <section class="blog-modal">
+
+          <button class="modal-close-btn" data-blog-modal-close-btn>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <figure class="blog-modal-banner-box">
+            <img src="https://i.ibb.co/GQH5sSVn/hacker.webp" alt="Mass Certifications" loading="lazy" data-blog-modal-img>
+          </figure>
+
+          <div class="blog-modal-content">
+
+            <div class="blog-meta">
+              <p class="blog-category" data-blog-modal-category>Design</p>
+
+              <span class="dot"></span>
+
+              <time datetime="2025-10-14" data-blog-modal-date>Oct 14, 2025</time>
+            </div>
+
+            <h3 class="h3 blog-item-title" data-blog-modal-title>Certifications of 2025</h3>
+
+            <p class="blog-text" data-blog-modal-text>
+              During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
+            </p>
+
+
+          </div>
+
+        </section>
+
+      </div>
 
       <!--
         - #CONTACT
@@ -846,7 +920,7 @@
           <h3 class="h3 form-title">Contact Form</h3>
 
           <form   action="https://formspree.io/f/mrearqzy" method="POST" class="form" data-form>
-            
+
             <div class="input-wrapper">
               <input type="email" name="email" class="form-input" placeholder="dumpsterdiver12342@example.com" required data-form-input>
             </div>

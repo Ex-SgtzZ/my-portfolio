@@ -55,6 +55,74 @@ overlay.addEventListener("click", testimonialsModalFunc);
 
 
 
+
+// blog modal variables
+const blogItems = document.querySelectorAll("[data-blog-item]");
+const blogModalContainer = document.querySelector("[data-blog-modal-container]");
+const blogModalCloseBtn = document.querySelector("[data-blog-modal-close-btn]");
+const blogOverlay = document.querySelector("[data-blog-overlay]");
+const blogModalImg = document.querySelector("[data-blog-modal-img]");
+const blogModalCategory = document.querySelector("[data-blog-modal-category]");
+const blogModalDate = document.querySelector("[data-blog-modal-date]");
+const blogModalTitle = document.querySelector("[data-blog-modal-title]");
+const blogModalText = document.querySelector("[data-blog-modal-text]");
+
+const getShortPreview = function (text) {
+  const maxPreviewChars = 90;
+  const normalizedText = text.replace(/\s+/g, " ").trim();
+
+  if (normalizedText.length <= maxPreviewChars) {
+    return normalizedText;
+  }
+
+  return normalizedText.slice(0, maxPreviewChars).trimEnd() + "...";
+}
+
+const blogTextBlocks = document.querySelectorAll("[data-blog-text]");
+for (let i = 0; i < blogTextBlocks.length; i++) {
+  const fullText = blogTextBlocks[i].textContent.trim();
+  blogTextBlocks[i].setAttribute("data-blog-full-text", fullText);
+  blogTextBlocks[i].textContent = getShortPreview(fullText);
+}
+
+const blogModalFunc = function () {
+  blogModalContainer.classList.toggle("active");
+  blogOverlay.classList.toggle("active");
+}
+
+const openBlogModal = function (blogItem) {
+  const blogImg = blogItem.querySelector("[data-blog-img]");
+  const blogCategory = blogItem.querySelector("[data-blog-category]");
+  const blogDate = blogItem.querySelector("[data-blog-date]");
+  const blogTitle = blogItem.querySelector("[data-blog-title]");
+  const blogText = blogItem.querySelector("[data-blog-text]");
+
+  blogModalImg.src = blogImg.src;
+  blogModalImg.alt = blogImg.alt;
+  blogModalCategory.textContent = blogCategory.textContent;
+  blogModalDate.textContent = blogDate.textContent;
+  blogModalDate.setAttribute("datetime", blogDate.getAttribute("datetime"));
+  blogModalTitle.textContent = blogTitle.textContent;
+  blogModalText.textContent = blogText.getAttribute("data-blog-full-text");
+
+  blogModalFunc();
+}
+
+for (let i = 0; i < blogItems.length; i++) {
+  blogItems[i].addEventListener("click", function () {
+    openBlogModal(this);
+  });
+
+  const blogOpenBtn = blogItems[i].querySelector("[data-blog-open-btn]");
+  blogOpenBtn.addEventListener("click", function (event) {
+    event.stopPropagation();
+    openBlogModal(blogItems[i]);
+  });
+}
+
+blogModalCloseBtn.addEventListener("click", blogModalFunc);
+blogOverlay.addEventListener("click", blogModalFunc);
+
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
@@ -77,6 +145,82 @@ for (let i = 0; i < selectItems.length; i++) {
 
 // filter variables
 const filterItems = document.querySelectorAll("[data-filter-item]");
+const metricCertifications = document.querySelector("[data-metric-certifications]");
+const metricProjectTracks = document.querySelector("[data-metric-project-tracks]");
+const metricRecentTimeline = document.querySelector("[data-metric-recent-timeline]");
+const workShowcaseUpdated = document.querySelector("[data-work-showcase-updated]");
+
+const getVisiblePortfolioItems = function () {
+  const visibleItems = [];
+
+  for (let i = 0; i < filterItems.length; i++) {
+    if (filterItems[i].classList.contains("active")) {
+      visibleItems.push(filterItems[i]);
+    }
+  }
+
+  return visibleItems;
+}
+
+const getItemYears = function (projectItem) {
+  const itemText = projectItem.textContent || "";
+  const yearMatches = itemText.match(/\b(19|20)\d{2}\b/g);
+  const years = [];
+
+  if (!yearMatches) return years;
+
+  for (let i = 0; i < yearMatches.length; i++) {
+    years.push(Number(yearMatches[i]));
+  }
+
+  return years;
+}
+
+const updateWorkShowcaseStats = function () {
+  if (!metricCertifications || !metricProjectTracks || !metricRecentTimeline || !workShowcaseUpdated) return;
+
+  const visibleItems = getVisiblePortfolioItems();
+  let certificationCount = 0;
+  const projectTrackCategories = new Set();
+  const allYears = [];
+
+  for (let i = 0; i < visibleItems.length; i++) {
+    const category = visibleItems[i].dataset.category || "";
+
+    if (category === "certifications" || category === "legacy certifications") {
+      certificationCount += 1;
+    }
+
+    if (category === "projects" || category === "past projects") {
+      projectTrackCategories.add(category);
+    }
+
+    const years = getItemYears(visibleItems[i]);
+    for (let j = 0; j < years.length; j++) {
+      allYears.push(years[j]);
+    }
+  }
+
+  metricCertifications.textContent = String(certificationCount);
+  metricProjectTracks.textContent = String(projectTrackCategories.size);
+
+  if (allYears.length) {
+    const minYear = Math.min(...allYears);
+    const maxYear = Math.max(...allYears);
+    metricRecentTimeline.textContent = minYear === maxYear ? String(minYear) : `${minYear}-${maxYear}`;
+  } else {
+    metricRecentTimeline.textContent = "—";
+  }
+
+  const updatedText = new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit"
+  }).format(new Date());
+  workShowcaseUpdated.textContent = `Last updated: ${updatedText}`;
+}
 
 const filterFunc = function (selectedValue) {
 
@@ -91,6 +235,8 @@ const filterFunc = function (selectedValue) {
     }
 
   }
+
+  updateWorkShowcaseStats();
 
 }
 
@@ -112,6 +258,8 @@ for (let i = 0; i < filterBtn.length; i++) {
   });
 
 }
+
+updateWorkShowcaseStats();
 
 
 
