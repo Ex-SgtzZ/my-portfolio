@@ -325,7 +325,13 @@ main {
 
 .avatar-box {
   background: var(--bg-gradient-onyx);
-  border-radius: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar-box img {
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .info-content .name {
