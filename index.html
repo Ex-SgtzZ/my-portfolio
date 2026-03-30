@@ -835,6 +835,41 @@
           <h2 class="h2 article-title">Blog</h2>
         </header>
 
+        <section class="blog-showcase">
+          <div class="blog-spotlight">
+            <p class="blog-spotlight-label">Creator Journal</p>
+            <h3 class="h3 blog-spotlight-title">Building, shipping, and learning in public.</h3>
+            <p class="blog-spotlight-text">
+              This is where I share build logs, lessons from freelance projects, and practical notes from my journey as a developer and artist.
+            </p>
+            <ul class="blog-spotlight-stats">
+              <li>
+                <span class="blog-stat-value">12+</span>
+                <span class="blog-stat-label">Published notes</span>
+              </li>
+              <li>
+                <span class="blog-stat-value">3</span>
+                <span class="blog-stat-label">Core categories</span>
+              </li>
+              <li>
+                <span class="blog-stat-value">100%</span>
+                <span class="blog-stat-label">Hands-on projects</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="blog-mini-grid" aria-hidden="true">
+            <article class="blog-mini-card">
+              <p>Latest theme</p>
+              <h4>Frontend workflows</h4>
+            </article>
+            <article class="blog-mini-card">
+              <p>Now exploring</p>
+              <h4>Automation + AI tools</h4>
+            </article>
+          </div>
+        </section>
+
         <section class="blog-posts">
 
           <ul class="blog-posts-list">
@@ -843,7 +878,37 @@
               <button class="blog-post-card" type="button" data-blog-item>
 
                 <figure class="blog-banner-box">
-                  <img src="https://i.ibb.co/GQH5sSVn/hacker.webp" alt="Mass Certifications" loading="lazy" data-blog-img>
+                  <img src="./assets/images/blog-1.jpg" alt="Laptop on a desk with development tools open" loading="lazy" data-blog-img>
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category" data-blog-category>Development</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2026-03-14" data-blog-date>Mar 14, 2026</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title" data-blog-title>From Static Ideas to Interactive Components</h3>
+
+                  <p class="blog-text blog-preview-text" data-blog-text>
+                    I redesigned my portfolio workflow around reusable UI blocks so I can ship updates faster without rewriting entire sections. This post walks through how I break layouts into component-like chunks using semantic HTML and utility-style patterns in plain CSS. I also share how small naming conventions prevent style conflicts when projects grow.
+                  </p>
+
+                  <span class="blog-read-more-btn" data-blog-open-btn>Read case study</span>
+
+                </div>
+
+              </button>
+            </li>
+
+            <li class="blog-post-item">
+              <button class="blog-post-card" type="button" data-blog-item>
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-2.jpg" alt="Notebook with sketches next to a keyboard" loading="lazy" data-blog-img>
                 </figure>
 
                 <div class="blog-content">
@@ -853,18 +918,76 @@
 
                     <span class="dot"></span>
 
-                    <time datetime="2025-10-14" data-blog-date>Oct 14, 2025</time>
+                    <time datetime="2026-02-20" data-blog-date>Feb 20, 2026</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title" data-blog-title>Certifications of 2025</h3>
+                  <h3 class="h3 blog-item-title" data-blog-title>Design Systems for Solo Freelancers</h3>
 
                   <p class="blog-text blog-preview-text" data-blog-text>
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-
+                    Most freelancers think design systems are only for big teams, but a lightweight system saves huge amounts of revision time. I outline my personal token setup for colors, spacing, and type scales so client sites stay visually consistent. You will also see how I document component decisions so future updates stay easy.
                   </p>
 
-                  <button class="blog-read-more-btn" type="button" data-blog-open-btn>Read more</button>
+                  <span class="blog-read-more-btn" data-blog-open-btn>Read case study</span>
+
+                </div>
+
+              </button>
+            </li>
+
+            <li class="blog-post-item">
+              <button class="blog-post-card" type="button" data-blog-item>
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-5.jpg" alt="Code editor with JavaScript open" loading="lazy" data-blog-img>
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category" data-blog-category>JavaScript</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2026-01-29" data-blog-date>Jan 29, 2026</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title" data-blog-title>My Favorite Vanilla JS Patterns Right Now</h3>
+
+                  <p class="blog-text blog-preview-text" data-blog-text>
+                    This entry collects practical JavaScript patterns I use repeatedly across portfolio and client work, from progressive enhancement to clean event delegation. I cover why small helper functions matter and how to avoid fragile DOM coupling. The goal is predictable behavior with minimal overhead and no framework lock-in.
+                  </p>
+
+                  <span class="blog-read-more-btn" data-blog-open-btn>Read case study</span>
+
+                </div>
+
+              </button>
+            </li>
+
+            <li class="blog-post-item">
+              <button class="blog-post-card" type="button" data-blog-item>
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-6.jpg" alt="Creative workspace with coffee and tablet" loading="lazy" data-blog-img>
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category" data-blog-category>Freelance</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2025-12-11" data-blog-date>Dec 11, 2025</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title" data-blog-title>What I Changed After My First 10 Client Projects</h3>
+
+                  <p class="blog-text blog-preview-text" data-blog-text>
+                    After completing ten freelance projects, I rewired my process around communication checkpoints and tighter scope planning. In this post I share the template messages, kickoff structure, and review cadence that helped me reduce rework. These adjustments improved delivery speed and gave clients more confidence from day one.
+                  </p>
+
+                  <span class="blog-read-more-btn" data-blog-open-btn>Read case study</span>
 
                 </div>
 
@@ -888,37 +1011,24 @@
           </button>
 
           <figure class="blog-modal-banner-box">
-            <img src="https://i.ibb.co/GQH5sSVn/hacker.webp" alt="Mass Certifications" loading="lazy" data-blog-modal-img>
+            <img src="./assets/images/blog-1.jpg" alt="Laptop on a desk with development tools open" loading="lazy" data-blog-modal-img>
           </figure>
 
           <div class="blog-modal-content">
 
             <div class="blog-meta">
-              <p class="blog-category" data-blog-modal-category>Design</p>
+              <p class="blog-category" data-blog-modal-category>Development</p>
 
               <span class="dot"></span>
 
-              <time datetime="2025-10-14" data-blog-modal-date>Oct 14, 2025</time>
+              <time datetime="2026-03-14" data-blog-modal-date>Mar 14, 2026</time>
             </div>
 
-            <h3 class="h3 blog-item-title" data-blog-modal-title>Certifications of 2025</h3>
+            <h3 class="h3 blog-item-title" data-blog-modal-title>From Static Ideas to Interactive Components</h3>
 
             <p class="blog-text" data-blog-modal-text>
-          q         During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.
-                    During October of 2025, I earned several certifications including JavaScript Algorithms and Data Structures V8, Frontend Development Libraries, and Data Visualization.            </p>
+              I redesigned my portfolio workflow around reusable UI blocks so I can ship updates faster without rewriting entire sections. This post walks through how I break layouts into component-like chunks using semantic HTML and utility-style patterns in plain CSS. I also share how small naming conventions prevent style conflicts when projects grow.
+            </p>
 
 
           </div>
