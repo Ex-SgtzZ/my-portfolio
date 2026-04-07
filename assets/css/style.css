@@ -1112,7 +1112,7 @@ main {
 
 .portfolio-tab-btn {
   background: var(--onyx);
-  color: var(--light-gray);
+  color: var(--white-2);
   border-radius: 10px;
   padding: 10px 16px;
   font-size: var(--fs-6);
@@ -1154,8 +1154,8 @@ main {
 
 .tech-item {
   text-align: center;
-  background: hsl(240, 2%, 18%);
-  border: 1px solid hsl(45, 40%, 35%);
+  background: hsl(0, 10%, 16%);
+  border: 1px solid hsla(0, 100%, 58%, 0.35);
   border-radius: 14px;
   padding: 16px 10px;
 }
@@ -1169,15 +1169,15 @@ main {
   place-items: center;
   font-weight: var(--fw-600);
   font-size: 22px;
-  background: hsl(240, 2%, 12%);
+  background: hsl(0, 14%, 12%);
 }
 
-.tech-icon.react { color: #8ce6ff; border: 1px solid #8ce6ff99; }
-.tech-icon.vue { color: #7ff2bc; border: 1px solid #7ff2bc99; }
-.tech-icon.ts { color: #6bb5ff; border: 1px solid #6bb5ff99; }
-.tech-icon.node { color: #b6ea83; border: 1px solid #b6ea8399; }
-.tech-icon.python { color: #ffe07a; border: 1px solid #ffe07a99; }
-.tech-icon.java { color: #ffbe73; border: 1px solid #ffbe7399; }
+.tech-icon.react { color: #ff9d9d; border: 1px solid #ff9d9d99; }
+.tech-icon.vue { color: #ffb7a2; border: 1px solid #ffb7a299; }
+.tech-icon.ts { color: #ff8a8a; border: 1px solid #ff8a8a99; }
+.tech-icon.node { color: #ffad7d; border: 1px solid #ffad7d99; }
+.tech-icon.python { color: #ffbcbc; border: 1px solid #ffbcbc99; }
+.tech-icon.java { color: #ff9670; border: 1px solid #ff967099; }
 
 .tech-name {
   font-size: var(--fs-6);
@@ -1247,23 +1247,60 @@ main {
 }
 
 .blog-spotlight-stats li {
-  background: hsl(240, 2%, 16%);
-  border: 1px solid var(--jet);
+  background: var(--eerie-black-1);
+  border: 1px solid hsla(0, 100%, 58%, 0.3);
   border-radius: 12px;
   padding: 10px;
 }
 
 .blog-stat-value {
   display: block;
-  color: var(--white-2);
+  color: var(--orange-yellow-crayola);
   font-size: var(--fs-4);
   font-weight: var(--fw-600);
   margin-bottom: 2px;
 }
 
 .blog-stat-label {
-  color: var(--light-gray-70);
+  color: var(--light-gray);
   font-size: var(--fs-7);
+}
+
+html[data-theme="light"] .portfolio-tab-btn {
+  background: hsl(0, 35%, 34%);
+  color: hsl(0, 0%, 100%);
+}
+
+html[data-theme="light"] .portfolio-tab-btn.active,
+html[data-theme="light"] .portfolio-tab-btn:hover {
+  background: hsl(0, 82%, 42%);
+  color: hsl(0, 0%, 100%);
+}
+
+html[data-theme="light"] .tech-item {
+  background: hsl(0, 0%, 100%);
+  border: 1px solid hsl(0, 50%, 55%);
+}
+
+html[data-theme="light"] .tech-icon {
+  background: hsl(0, 0%, 97%);
+}
+
+html[data-theme="light"] .tech-name {
+  color: hsl(0, 55%, 20%);
+}
+
+html[data-theme="light"] .blog-spotlight-stats li {
+  background: hsl(0, 0%, 100%);
+  border: 1px solid hsl(0, 44%, 65%);
+}
+
+html[data-theme="light"] .blog-stat-value {
+  color: hsl(0, 78%, 34%);
+}
+
+html[data-theme="light"] .blog-stat-label {
+  color: hsl(0, 30%, 28%);
 }
 
 .blog-mini-grid {
