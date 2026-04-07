@@ -506,14 +506,14 @@ main {
 .notification-banner.active { display: block; }
 
 .notification-banner-track {
-  color: var(--orange-yellow-crayola);
-  font-size: var(--fs-7);
+  color: var(--white-2);
+  font-size: var(--fs-6);
   font-weight: var(--fw-500);
   white-space: nowrap;
   width: max-content;
   min-width: 100%;
-  padding: 10px 16px;
-  animation: banner-scroll 14s linear infinite;
+  padding: 10px 14px;
+  animation: banner-scroll 16s linear infinite;
 }
 
 @keyframes banner-scroll {
@@ -1116,8 +1116,8 @@ main {
 
 .tech-item {
   text-align: center;
-  background: var(--eerie-black-1);
-  border: 1px solid var(--jet);
+  background: hsl(240, 2%, 18%);
+  border: 1px solid hsl(45, 40%, 35%);
   border-radius: 14px;
   padding: 16px 10px;
 }
@@ -1131,21 +1131,34 @@ main {
   place-items: center;
   font-weight: var(--fw-600);
   font-size: 22px;
+  background: hsl(240, 2%, 12%);
 }
 
-.tech-icon.react { color: #61dafb; border: 1px solid #61dafb55; }
-.tech-icon.vue { color: #42b883; border: 1px solid #42b88355; }
-.tech-icon.ts { color: #3178c6; border: 1px solid #3178c655; }
-.tech-icon.node { color: #7dbd4a; border: 1px solid #7dbd4a55; }
-.tech-icon.python { color: #ffd43b; border: 1px solid #ffd43b55; }
-.tech-icon.java { color: #f89820; border: 1px solid #f8982055; }
+.tech-icon.react { color: #8ce6ff; border: 1px solid #8ce6ff99; }
+.tech-icon.vue { color: #7ff2bc; border: 1px solid #7ff2bc99; }
+.tech-icon.ts { color: #6bb5ff; border: 1px solid #6bb5ff99; }
+.tech-icon.node { color: #b6ea83; border: 1px solid #b6ea8399; }
+.tech-icon.python { color: #ffe07a; border: 1px solid #ffe07a99; }
+.tech-icon.java { color: #ffbe73; border: 1px solid #ffbe7399; }
 
 .tech-name {
   font-size: var(--fs-6);
-  color: var(--white-2);
+  color: hsl(0, 0%, 98%);
+  font-weight: var(--fw-500);
 }
 
 @media (max-width: 480px) {
+  .notification-banner {
+    margin-bottom: 12px;
+    border-radius: 10px;
+  }
+
+  .notification-banner-track {
+    font-size: var(--fs-7);
+    padding: 8px 12px;
+    animation-duration: 18s;
+  }
+
   .tech-stack-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .blog-spotlight-stats { grid-template-columns: 1fr; }
 }
@@ -1989,7 +2002,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   .navbar {
     position: absolute;
     bottom: auto;
-    top: 0;
+    top: 56px;
     left: auto;
     right: 0;
     width: max-content;

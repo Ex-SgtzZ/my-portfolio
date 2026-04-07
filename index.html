@@ -131,6 +131,10 @@
         - #NAVBAR
       -->
 
+      <section class="notification-banner active" data-notification-banner aria-live="polite">
+        <p class="notification-banner-track" data-notification-text></p>
+      </section>
+
       <nav class="navbar">
 
         <ul class="navbar-list">
@@ -162,10 +166,6 @@
 
 
 
-
-      <section class="notification-banner active" data-notification-banner aria-live="polite">
-        <p class="notification-banner-track" data-notification-text></p>
-      </section>
 
       <!--
         - #ABOUT
@@ -453,42 +453,6 @@
             </li>
 
           </ol>
-
-        </section>
-
-        <section class="skill">
-
-          <h3 class="h3 skills-title">My skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">HTML and CSS</h5>
-                <data value="60">60%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 60%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Graphic design</h5>
-                <data value="65">65%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 65%;"></div>
-              </div>
-
-            </li>
-
-          </ul>
 
         </section>
 
@@ -823,6 +787,13 @@
           <div class="tech-stack-group">
             <h4 class="h4 tech-stack-subtitle">Frontend Development</h4>
             <ul class="tech-stack-list">
+              <!--
+                Icon edit guide:
+                1) Change the text/symbol inside each .tech-icon element (example: ⚛, TS, Py).
+                2) To change icon colors, update matching classes in assets/css/style.css:
+                   .tech-icon.react, .tech-icon.vue, .tech-icon.ts, .tech-icon.node, .tech-icon.python, .tech-icon.java
+                3) Keep each icon short (1-2 characters) so spacing stays consistent on mobile.
+              -->
               <li class="tech-item">
                 <div class="tech-icon react">⚛</div>
                 <p class="tech-name">React</p>
