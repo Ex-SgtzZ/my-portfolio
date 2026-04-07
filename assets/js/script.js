@@ -3,7 +3,9 @@
 
 const root = document.documentElement;
 const themeToggleBtn = document.querySelector("[data-theme-toggle]");
+const notificationToggleBtn = document.querySelector("[data-notification-toggle]");
 const THEME_STORAGE_KEY = "portfolio-theme";
+const NOTIFICATION_STORAGE_KEY = "portfolio-notifications-enabled";
 
 const setTheme = function (theme) {
   root.setAttribute("data-theme", theme);
@@ -25,6 +27,19 @@ if (themeToggleBtn) {
     setTheme(nextTheme);
   });
 }
+
+let notificationsEnabled = localStorage.getItem(NOTIFICATION_STORAGE_KEY) !== "false";
+
+const updateNotificationToggleButton = function () {
+  if (!notificationToggleBtn) {
+    return;
+  }
+
+  notificationToggleBtn.textContent = notificationsEnabled ? "🔔" : "🔕";
+  notificationToggleBtn.setAttribute("aria-label", notificationsEnabled ? "Disable notifications" : "Enable notifications");
+}
+
+updateNotificationToggleButton();
 
 
 
@@ -285,6 +300,11 @@ const updateNotificationBanner = function (sectionKey) {
     return;
   }
 
+  if (!notificationsEnabled) {
+    notificationBanner.classList.remove("active");
+    return;
+  }
+
   const bannerConfig = sectionNotifications[sectionKey];
 
   if (!bannerConfig || !bannerConfig.enabled) {
@@ -295,6 +315,17 @@ const updateNotificationBanner = function (sectionKey) {
   notificationBannerText.textContent = `${bannerConfig.message} — Last updated: ${bannerConfig.lastUpdated}`;
   notificationBanner.classList.add("active");
 };
+
+if (notificationToggleBtn) {
+  notificationToggleBtn.addEventListener("click", function () {
+    notificationsEnabled = !notificationsEnabled;
+    localStorage.setItem(NOTIFICATION_STORAGE_KEY, notificationsEnabled);
+    updateNotificationToggleButton();
+
+    const activeLink = document.querySelector("[data-nav-link].active");
+    updateNotificationBanner(activeLink ? activeLink.dataset.navTarget : "about");
+  });
+}
 
 const setActivePage = function (targetPage) {
   for (let i = 0; i < pages.length; i++) {
