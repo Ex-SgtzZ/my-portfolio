@@ -10,7 +10,8 @@ const setTheme = function (theme) {
   localStorage.setItem(THEME_STORAGE_KEY, theme);
 
   if (themeToggleBtn) {
-    themeToggleBtn.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+    themeToggleBtn.textContent = theme === "dark" ? "☀" : "🌙";
+    themeToggleBtn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
   }
 }
 
