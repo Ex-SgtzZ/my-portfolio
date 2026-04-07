@@ -223,21 +223,58 @@ for (let i = 0; i < formInputs.length; i++) {
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
+const notificationBanner = document.querySelector("[data-notification-banner]");
+const notificationTrack = document.querySelector("[data-notification-track]");
+
+const bannerConfig = {
+  enabled: true,
+  defaultMessage: "Site status: online",
+  sectionDates: {
+    about: "March 31, 2026",
+    resume: "March 18, 2026",
+    portfolio: "April 3, 2026",
+    blog: "April 6, 2026",
+    contact: "March 25, 2026"
+  }
+};
+
+const renderNotificationBanner = function (activeSection) {
+  if (!notificationBanner || !notificationTrack) {
+    return;
+  }
+
+  if (!bannerConfig.enabled) {
+    notificationBanner.hidden = true;
+    return;
+  }
+
+  const lastUpdatedDate = bannerConfig.sectionDates[activeSection] || bannerConfig.defaultMessage;
+  const message = `${activeSection.toUpperCase()} · Last updated ${lastUpdatedDate}`;
+  notificationTrack.textContent = `${message} \u2022 ${message} \u2022 ${message}`;
+  notificationBanner.hidden = false;
+};
 
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
+    const selectedPage = this.dataset.pageTarget;
 
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
+    for (let j = 0; j < pages.length; j++) {
+      if (selectedPage === pages[j].dataset.page) {
+        pages[j].classList.add("active");
         window.scrollTo(0, 0);
       } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+        pages[j].classList.remove("active");
       }
     }
 
+    for (let j = 0; j < navigationLinks.length; j++) {
+      navigationLinks[j].classList.remove("active");
+    }
+
+    this.classList.add("active");
+    renderNotificationBanner(selectedPage);
   });
 }
+
+renderNotificationBanner("about");
