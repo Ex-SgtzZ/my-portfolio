@@ -1,5 +1,13 @@
 'use strict';
 
+const sectionNotificationSettings = {
+  about: { enabled: true, lastUpdated: "April 7, 2026" },
+  resume: { enabled: true, lastUpdated: "April 7, 2026" },
+  portfolio: { enabled: true, lastUpdated: "April 7, 2026" },
+  blog: { enabled: true, lastUpdated: "April 7, 2026" },
+  contact: { enabled: false, lastUpdated: "April 7, 2026" }
+};
+
 
 
 // element toggle function
@@ -223,21 +231,48 @@ for (let i = 0; i < formInputs.length; i++) {
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
+const siteNotification = document.querySelector("[data-site-notification]");
+const siteNotificationTrack = document.querySelector("[data-site-notification-track]");
+
+const updateSectionNotification = function (pageName) {
+  if (!siteNotification || !siteNotificationTrack) return;
+
+  const settings = sectionNotificationSettings[pageName];
+
+  if (!settings || settings.enabled !== true) {
+    siteNotification.hidden = true;
+    siteNotificationTrack.textContent = "";
+    return;
+  }
+
+  const message = `${pageName.charAt(0).toUpperCase() + pageName.slice(1)} section updated ${settings.lastUpdated} • `;
+  siteNotificationTrack.textContent = message.repeat(4).trim();
+  siteNotification.hidden = false;
+}
+
+const activatePage = function (targetPage) {
+  for (let i = 0; i < pages.length; i++) {
+    const isActivePage = pages[i].dataset.page === targetPage;
+    pages[i].classList.toggle("active", isActivePage);
+  }
+
+  for (let i = 0; i < navigationLinks.length; i++) {
+    const navTarget = navigationLinks[i].textContent.trim().toLowerCase();
+    navigationLinks[i].classList.toggle("active", navTarget === targetPage);
+  }
+
+  updateSectionNotification(targetPage);
+  window.scrollTo(0, 0);
+}
 
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
-    }
-
+    activatePage(this.textContent.trim().toLowerCase());
   });
+}
+
+const initialActivePage = document.querySelector("[data-page].active");
+if (initialActivePage) {
+  activatePage(initialActivePage.dataset.page);
 }

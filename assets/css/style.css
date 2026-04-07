@@ -143,6 +143,32 @@ html { font-family: var(--ff-poppins); }
 
 body { background: var(--smoky-black); }
 
+.site-notification {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--jet);
+  background: linear-gradient(90deg, rgba(255, 193, 7, 0.14), rgba(255, 193, 7, 0.05));
+}
+
+.site-notification-track {
+  display: inline-block;
+  min-width: 100%;
+  padding: 10px 0;
+  color: var(--orange-yellow-crayola);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+  will-change: transform;
+  animation: notification-marquee 16s linear infinite;
+}
+
+@keyframes notification-marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
 
 
 
