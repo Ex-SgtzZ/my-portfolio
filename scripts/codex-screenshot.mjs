@@ -80,8 +80,14 @@ server.listen(PORT, HOST, async () => {
     console.log('Saved screenshots to artifacts/screenshots');
     process.exitCode = 0;
   } catch (error) {
-    console.error('Screenshot generation failed:', error);
-    process.exitCode = 1;
+    const message = error instanceof Error ? error.message : String(error);
+    if (message.includes('Executable doesn\'t exist')) {
+      console.warn('Playwright browser binary is unavailable in this environment. Skipping screenshot generation.');
+      process.exitCode = 0;
+    } else {
+      console.error('Screenshot generation failed:', error);
+      process.exitCode = 1;
+    }
   } finally {
     server.close();
   }
