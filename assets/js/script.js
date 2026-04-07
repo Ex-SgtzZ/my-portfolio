@@ -223,21 +223,72 @@ for (let i = 0; i < formInputs.length; i++) {
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
+const notificationBanner = document.querySelector("[data-notification-banner]");
+const notificationTrack = document.querySelector("[data-notification-track]");
+
+const sectionNotifications = {
+  about: {
+    enabled: true,
+    updatedOn: "April 7, 2026",
+    message: "👋 About section refreshed.",
+  },
+  resume: {
+    enabled: false,
+    updatedOn: "April 7, 2026",
+    message: "Resume section update in progress.",
+  },
+  portfolio: {
+    enabled: true,
+    updatedOn: "April 7, 2026",
+    message: "🚀 Portfolio section was updated with new work.",
+  },
+  blog: {
+    enabled: true,
+    updatedOn: "April 7, 2026",
+    message: "📝 Blog section includes the latest post preview.",
+  },
+  contact: {
+    enabled: false,
+    updatedOn: "April 7, 2026",
+    message: "Contact section update in progress.",
+  },
+};
+
+const renderNotification = function (sectionKey) {
+  const notificationConfig = sectionNotifications[sectionKey];
+
+  if (!notificationConfig || !notificationConfig.enabled) {
+    notificationBanner.setAttribute("hidden", "");
+    notificationTrack.textContent = "";
+    return;
+  }
+
+  notificationBanner.removeAttribute("hidden");
+  notificationTrack.textContent = `${notificationConfig.message} Last updated: ${notificationConfig.updatedOn}.`;
+}
+
+const setActiveSection = function (sectionKey) {
+  for (let i = 0; i < pages.length; i++) {
+    const isActivePage = pages[i].dataset.page === sectionKey;
+    pages[i].classList.toggle("active", isActivePage);
+  }
+
+  for (let i = 0; i < navigationLinks.length; i++) {
+    const isActiveLink = navigationLinks[i].dataset.navTarget === sectionKey;
+    navigationLinks[i].classList.toggle("active", isActiveLink);
+  }
+
+  renderNotification(sectionKey);
+  window.scrollTo(0, 0);
+}
 
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
-    }
-
+    const selectedSection = this.dataset.navTarget;
+    setActiveSection(selectedSection);
   });
 }
+
+const defaultSection = document.querySelector("[data-page].active");
+setActiveSection(defaultSection ? defaultSection.dataset.page : "about");

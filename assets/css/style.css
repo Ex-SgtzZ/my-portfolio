@@ -451,6 +451,37 @@ main {
 
 
 /*-----------------------------------*\
+  #NOTIFICATION BANNER
+\*-----------------------------------*/
+
+.notification-banner {
+  margin-bottom: 15px;
+  padding: 10px 0;
+  border: 1px solid var(--jet);
+  border-radius: 12px;
+  background: hsla(45, 100%, 72%, 0.1);
+  overflow: hidden;
+}
+
+.notification-banner-track {
+  display: inline-block;
+  min-width: 100%;
+  color: var(--orange-yellow-crayola);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+  white-space: nowrap;
+  padding-inline: 100%;
+  animation: notification-scroll 14s linear infinite;
+}
+
+@keyframes notification-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+
+
+/*-----------------------------------*\
   #NAVBAR
 \*-----------------------------------*/
 
@@ -1970,6 +2001,10 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .navbar-link { font-weight: var(--fw-500); }
+
+  .notification-banner {
+    margin-right: 340px;
+  }
 
 
 
