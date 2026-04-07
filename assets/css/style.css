@@ -1168,6 +1168,18 @@ main {
   border: 1px solid var(--jet);
   border-radius: 16px;
   padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-stack::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid hsla(355, 88%, 58%, 0.24);
+  box-shadow: inset 0 0 24px hsla(355, 88%, 58%, 0.12);
+  pointer-events: none;
 }
 
 .tech-stack-title {
@@ -1233,7 +1245,7 @@ main {
 }
 
 .tech-detail-modal {
-  background: linear-gradient(135deg, hsl(352, 34%, 30%), hsl(350, 30%, 24%));
+  background: linear-gradient(135deg, hsl(352, 36%, 34%), hsl(350, 31%, 27%));
   position: relative;
   padding: 24px;
   margin: 15px 12px;
@@ -1290,7 +1302,7 @@ main {
 }
 
 [data-tech-overlay].active {
-  opacity: 0.36;
+  opacity: 0.3;
 }
 
 @media (max-width: 480px) {
@@ -1402,6 +1414,11 @@ html[data-theme="light"] .tech-name {
 html[data-theme="light"] .tech-stack {
   border-color: hsl(0, 48%, 62%);
   background: hsl(0, 0%, 99%);
+}
+
+html[data-theme="light"] .tech-stack::before {
+  border: 1px solid hsl(0, 56%, 70%);
+  box-shadow: inset 0 0 18px hsla(0, 62%, 68%, 0.22);
 }
 
 html[data-theme="light"] .tech-stack-title,
