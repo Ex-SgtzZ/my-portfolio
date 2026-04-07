@@ -1199,7 +1199,7 @@ main {
 
 .tech-item {
   text-align: center;
-  background: hsl(352, 24%, 15%);
+  background: hsl(352, 26%, 18%);
   border: 1px solid var(--dark-red-soft);
   border-radius: 14px;
   padding: 16px 10px;
@@ -1216,7 +1216,7 @@ main {
   place-items: center;
   font-weight: var(--fw-600);
   font-size: 22px;
-  background: hsl(0, 14%, 12%);
+  background: hsl(352, 20%, 19%);
   transition: transform var(--transition-1), box-shadow var(--transition-1);
 }
 
