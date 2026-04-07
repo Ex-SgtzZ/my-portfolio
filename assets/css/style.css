@@ -1222,6 +1222,11 @@ main {
   transition: transform var(--transition-1), box-shadow var(--transition-1);
 }
 
+.tech-icon i {
+  font-size: 24px;
+  line-height: 1;
+}
+
 .tech-icon.react { color: #8db2ff; border: 1px solid #8db2ff99; }
 .tech-icon.vue { color: #a6c4ff; border: 1px solid #a6c4ff99; }
 .tech-icon.ts { color: #7ea7ff; border: 1px solid #7ea7ff99; }
