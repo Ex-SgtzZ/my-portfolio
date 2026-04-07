@@ -1,6 +1,47 @@
 'use strict';
 
 
+const root = document.documentElement;
+const themeToggleBtn = document.querySelector("[data-theme-toggle]");
+const notificationToggleBtn = document.querySelector("[data-notification-toggle]");
+const THEME_STORAGE_KEY = "portfolio-theme";
+const NOTIFICATION_STORAGE_KEY = "portfolio-notifications-enabled";
+
+const setTheme = function (theme) {
+  root.setAttribute("data-theme", theme);
+  localStorage.setItem(THEME_STORAGE_KEY, theme);
+
+  if (themeToggleBtn) {
+    themeToggleBtn.textContent = theme === "dark" ? "☀" : "🌙";
+    themeToggleBtn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+  }
+}
+
+const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+setTheme(savedTheme === "light" ? "light" : "dark");
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener("click", function () {
+    const currentTheme = root.getAttribute("data-theme");
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+  });
+}
+
+let notificationsEnabled = localStorage.getItem(NOTIFICATION_STORAGE_KEY) !== "false";
+
+const updateNotificationToggleButton = function () {
+  if (!notificationToggleBtn) {
+    return;
+  }
+
+  notificationToggleBtn.textContent = notificationsEnabled ? "🔔" : "🔕";
+  notificationToggleBtn.setAttribute("aria-label", notificationsEnabled ? "Disable notifications" : "Enable notifications");
+}
+
+updateNotificationToggleButton();
+
+
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
@@ -223,21 +264,89 @@ for (let i = 0; i < formInputs.length; i++) {
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
+const notificationBanner = document.querySelector("[data-notification-banner]");
+const notificationBannerText = document.querySelector("[data-notification-text]");
+
+const sectionNotifications = {
+  about: {
+    enabled: true,
+    message: "About section updated",
+    lastUpdated: "April 7, 2026"
+  },
+  resume: {
+    enabled: true,
+    message: "Resume refreshed",
+    lastUpdated: "April 7, 2026"
+  },
+  portfolio: {
+    enabled: true,
+    message: "Portfolio projects updated",
+    lastUpdated: "April 7, 2026"
+  },
+  blog: {
+    enabled: true,
+    message: "Blog posts updated",
+    lastUpdated: "April 7, 2026"
+  },
+  contact: {
+    enabled: false,
+    message: "Contact details updated",
+    lastUpdated: "April 7, 2026"
+  }
+};
+
+const updateNotificationBanner = function (sectionKey) {
+  if (!notificationBanner || !notificationBannerText) {
+    return;
+  }
+
+  if (!notificationsEnabled) {
+    notificationBanner.classList.remove("active");
+    return;
+  }
+
+  const bannerConfig = sectionNotifications[sectionKey];
+
+  if (!bannerConfig || !bannerConfig.enabled) {
+    notificationBanner.classList.remove("active");
+    return;
+  }
+
+  notificationBannerText.textContent = `${bannerConfig.message} — Last updated: ${bannerConfig.lastUpdated}`;
+  notificationBanner.classList.add("active");
+};
+
+if (notificationToggleBtn) {
+  notificationToggleBtn.addEventListener("click", function () {
+    notificationsEnabled = !notificationsEnabled;
+    localStorage.setItem(NOTIFICATION_STORAGE_KEY, notificationsEnabled);
+    updateNotificationToggleButton();
+
+    const activeLink = document.querySelector("[data-nav-link].active");
+    updateNotificationBanner(activeLink ? activeLink.dataset.navTarget : "about");
+  });
+}
+
+const setActivePage = function (targetPage) {
+  for (let i = 0; i < pages.length; i++) {
+    pages[i].classList.toggle("active", pages[i].dataset.page === targetPage);
+  }
+
+  for (let i = 0; i < navigationLinks.length; i++) {
+    navigationLinks[i].classList.toggle("active", navigationLinks[i].dataset.navTarget === targetPage);
+  }
+
+  updateNotificationBanner(targetPage);
+  window.scrollTo(0, 0);
+};
 
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
-    }
-
+    const targetPage = this.dataset.navTarget;
+    setActivePage(targetPage);
   });
 }
+
+const defaultActiveLink = document.querySelector("[data-nav-link].active");
+setActivePage(defaultActiveLink ? defaultActiveLink.dataset.navTarget : "about");
