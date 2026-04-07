@@ -1944,7 +1944,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     align-items: stretch;
   }
 
-  .blog-mini-grid { grid-template-rows: 1fr 1fr; }
+  .blog-mini-grid { grid-template-rows: repeat(3, 1fr); }
 
   .blog-posts-list { gap: 30px; }
 
