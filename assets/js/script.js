@@ -115,6 +115,56 @@ for (let i = 0; i < blogItems.length; i++) {
 blogModalCloseBtn.addEventListener("click", blogModalFunc);
 blogOverlay.addEventListener("click", blogModalFunc);
 
+// portfolio tab variables
+const portfolioTabButtons = document.querySelectorAll("[data-portfolio-tab]");
+const portfolioPanels = document.querySelectorAll("[data-portfolio-panel]");
+
+for (let i = 0; i < portfolioTabButtons.length; i++) {
+  portfolioTabButtons[i].addEventListener("click", function () {
+    const selectedTab = this.dataset.portfolioTab;
+
+    for (let j = 0; j < portfolioTabButtons.length; j++) {
+      portfolioTabButtons[j].classList.remove("active");
+    }
+
+    for (let j = 0; j < portfolioPanels.length; j++) {
+      if (portfolioPanels[j].dataset.portfolioPanel === selectedTab) {
+        portfolioPanels[j].classList.add("active");
+      } else {
+        portfolioPanels[j].classList.remove("active");
+      }
+    }
+
+    this.classList.add("active");
+  });
+}
+
+// featured item switcher (portfolio creator journal)
+const featureTypeSelect = document.querySelector("[data-feature-type-select]");
+const featuredLabel = document.querySelector("[data-featured-label]");
+const featuredTitle = document.querySelector("[data-featured-title]");
+
+const featuredContentMap = {
+  certification: {
+    label: "Featured certification",
+    title: "B1 English • Mar 17, 2026"
+  },
+  project: {
+    label: "Featured project",
+    title: "Stilz RP • Roleplay server site"
+  }
+};
+
+if (featureTypeSelect && featuredLabel && featuredTitle) {
+  featureTypeSelect.addEventListener("change", function () {
+    const selectedType = this.value;
+    const selectedContent = featuredContentMap[selectedType] || featuredContentMap.certification;
+
+    featuredLabel.textContent = selectedContent.label;
+    featuredTitle.textContent = selectedContent.title;
+  });
+}
+
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
