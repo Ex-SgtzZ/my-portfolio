@@ -1166,7 +1166,7 @@ main {
 .portfolio-panel.active { display: block; }
 
 .tech-stack {
-  background: linear-gradient(145deg, hsl(350, 18%, 18%), hsl(240, 5%, 15%));
+  background: linear-gradient(145deg, hsl(146, 26%, 18%), hsl(146, 18%, 13%));
   border: 1px solid hsla(146, 70%, 52%, 0.3);
   border-radius: 16px;
   padding: 20px;
