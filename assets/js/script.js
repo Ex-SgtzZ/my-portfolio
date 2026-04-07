@@ -223,21 +223,73 @@ for (let i = 0; i < formInputs.length; i++) {
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
+const notificationBanner = document.querySelector("[data-notification-banner]");
+const notificationBannerText = document.querySelector("[data-notification-text]");
+
+const sectionNotifications = {
+  about: {
+    enabled: true,
+    message: "About section updated",
+    lastUpdated: "April 7, 2026"
+  },
+  resume: {
+    enabled: true,
+    message: "Resume refreshed",
+    lastUpdated: "April 7, 2026"
+  },
+  portfolio: {
+    enabled: true,
+    message: "Portfolio projects updated",
+    lastUpdated: "April 7, 2026"
+  },
+  blog: {
+    enabled: true,
+    message: "Blog posts updated",
+    lastUpdated: "April 7, 2026"
+  },
+  contact: {
+    enabled: false,
+    message: "Contact details updated",
+    lastUpdated: "April 7, 2026"
+  }
+};
+
+const updateNotificationBanner = function (sectionKey) {
+  if (!notificationBanner || !notificationBannerText) {
+    return;
+  }
+
+  const bannerConfig = sectionNotifications[sectionKey];
+
+  if (!bannerConfig || !bannerConfig.enabled) {
+    notificationBanner.classList.remove("active");
+    return;
+  }
+
+  notificationBannerText.textContent = `${bannerConfig.message} — Last updated: ${bannerConfig.lastUpdated}`;
+  notificationBanner.classList.add("active");
+};
+
+const setActivePage = function (targetPage) {
+  for (let i = 0; i < pages.length; i++) {
+    pages[i].classList.toggle("active", pages[i].dataset.page === targetPage);
+  }
+
+  for (let i = 0; i < navigationLinks.length; i++) {
+    navigationLinks[i].classList.toggle("active", navigationLinks[i].dataset.navTarget === targetPage);
+  }
+
+  updateNotificationBanner(targetPage);
+  window.scrollTo(0, 0);
+};
 
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
-    }
-
+    const targetPage = this.dataset.navTarget;
+    setActivePage(targetPage);
   });
 }
+
+const defaultActiveLink = document.querySelector("[data-nav-link].active");
+setActivePage(defaultActiveLink ? defaultActiveLink.dataset.navTarget : "about");

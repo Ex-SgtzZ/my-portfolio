@@ -487,6 +487,40 @@ main {
 
 .navbar-link.active { color: var(--orange-yellow-crayola); }
 
+/*-----------------------------------*\
+  #NOTIFICATION BANNER
+\*-----------------------------------*/
+
+.notification-banner {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  margin-bottom: 18px;
+  border: 1px solid var(--jet);
+  border-radius: 12px;
+  background: hsla(240, 2%, 14%, 0.96);
+  overflow: hidden;
+  display: none;
+}
+
+.notification-banner.active { display: block; }
+
+.notification-banner-track {
+  color: var(--orange-yellow-crayola);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+  white-space: nowrap;
+  width: max-content;
+  min-width: 100%;
+  padding: 10px 16px;
+  animation: banner-scroll 14s linear infinite;
+}
+
+@keyframes banner-scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
 
 
 
