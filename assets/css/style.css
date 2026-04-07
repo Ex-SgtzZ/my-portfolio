@@ -1283,6 +1283,11 @@ main {
   margin-bottom: 16px;
 }
 
+.blog-spotlight-summary {
+  display: grid;
+  gap: 12px;
+}
+
 .blog-spotlight-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1307,6 +1312,33 @@ main {
 .blog-stat-label {
   color: var(--light-gray);
   font-size: var(--fs-7);
+}
+
+.portfolio-featured-item {
+  background: var(--eerie-black-1);
+  border: 1px solid hsla(0, 100%, 58%, 0.3);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.portfolio-featured-label {
+  color: var(--orange-yellow-crayola);
+  font-size: var(--fs-7);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.portfolio-featured-title {
+  color: var(--white-2);
+  font-size: var(--fs-6);
+  margin-bottom: 6px;
+}
+
+.portfolio-featured-text {
+  color: var(--light-gray-70);
+  font-size: var(--fs-7);
+  line-height: 1.5;
 }
 
 html[data-theme="light"] .portfolio-tab-btn {
@@ -1356,6 +1388,20 @@ html[data-theme="light"] .blog-stat-value {
 html[data-theme="light"] .blog-stat-label {
   color: hsl(0, 38%, 24%);
   font-weight: var(--fw-500);
+}
+
+html[data-theme="light"] .portfolio-featured-item {
+  background: hsl(0, 0%, 100%);
+  border: 1px solid hsl(0, 56%, 56%);
+}
+
+html[data-theme="light"] .portfolio-featured-label,
+html[data-theme="light"] .portfolio-featured-title {
+  color: hsl(0, 78%, 34%);
+}
+
+html[data-theme="light"] .portfolio-featured-text {
+  color: hsl(0, 38%, 24%);
 }
 
 html[data-theme="light"] .blog-spotlight {
@@ -1944,7 +1990,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     align-items: stretch;
   }
 
-  .blog-mini-grid { grid-template-rows: repeat(3, 1fr); }
+  .blog-mini-grid { grid-template-rows: 1fr 1fr; }
 
   .blog-posts-list { gap: 30px; }
 
@@ -2065,6 +2111,11 @@ textarea.form-input::-webkit-resizer { display: none; }
   .project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
 
   .blog-spotlight { padding: 24px; }
+
+  .blog-spotlight-summary {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: stretch;
+  }
 
 
 
