@@ -787,15 +787,15 @@
                    .tech-icon.react, .tech-icon.vue, .tech-icon.ts, .tech-icon.node, .tech-icon.python, .tech-icon.java
                 3) Keep each icon short (1-2 characters) so spacing stays consistent on mobile.
               -->
-              <li class="tech-item">
+              <li class="tech-item" data-tech-item data-tech-name="React" data-tech-level="88" data-tech-blurb="I build reusable UI components, dynamic state-driven layouts, and smooth interactions with modern React patterns.">
                 <div class="tech-icon react">⚛</div>
                 <p class="tech-name">React</p>
               </li>
-              <li class="tech-item">
+              <li class="tech-item" data-tech-item data-tech-name="Vue" data-tech-level="74" data-tech-blurb="I can ship clean Vue interfaces with composable components and straightforward data binding for small-to-mid projects.">
                 <div class="tech-icon vue">V</div>
                 <p class="tech-name">Vue</p>
               </li>
-              <li class="tech-item">
+              <li class="tech-item" data-tech-item data-tech-name="TypeScript" data-tech-level="82" data-tech-blurb="I use TypeScript to keep larger codebases safer with strong typing, cleaner contracts, and more predictable refactors.">
                 <div class="tech-icon ts">TS</div>
                 <p class="tech-name">TypeScript</p>
               </li>
@@ -805,15 +805,15 @@
           <div class="tech-stack-group">
             <h4 class="h4 tech-stack-subtitle">Backend Development</h4>
             <ul class="tech-stack-list">
-              <li class="tech-item">
+              <li class="tech-item" data-tech-item data-tech-name="Node.js" data-tech-level="80" data-tech-blurb="I create API routes, auth flows, and utility services in Node.js with clear structure and maintainable logic.">
                 <div class="tech-icon node">N</div>
                 <p class="tech-name">Node.js</p>
               </li>
-              <li class="tech-item">
+              <li class="tech-item" data-tech-item data-tech-name="Python" data-tech-level="72" data-tech-blurb="I use Python for scripting, automation, and practical backend workflows where speed and readability matter.">
                 <div class="tech-icon python">Py</div>
                 <p class="tech-name">Python</p>
               </li>
-              <li class="tech-item">
+              <li class="tech-item" data-tech-item data-tech-name="Java" data-tech-level="67" data-tech-blurb="I’m comfortable with core Java fundamentals and can build object-oriented solutions for learning and project needs.">
                 <div class="tech-icon java">J</div>
                 <p class="tech-name">Java</p>
               </li>
@@ -821,6 +821,19 @@
           </div>
 
         </section>
+
+        <div class="modal-container" data-tech-modal-container>
+          <div class="overlay" data-tech-overlay></div>
+          <section class="tech-detail-modal">
+            <button class="modal-close-btn" data-tech-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+            <p class="tech-detail-label">Skill detail</p>
+            <h3 class="h3 tech-detail-title" data-tech-modal-title>React</h3>
+            <p class="tech-detail-level">Confidence: <span data-tech-modal-level>88%</span></p>
+            <p class="tech-detail-text" data-tech-modal-text></p>
+          </section>
+        </div>
 
       </article>
 
