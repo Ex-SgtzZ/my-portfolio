@@ -5,7 +5,6 @@ const root = document.documentElement;
 const themeToggleBtn = document.querySelector("[data-theme-toggle]");
 const notificationToggleBtn = document.querySelector("[data-notification-toggle]");
 const THEME_STORAGE_KEY = "portfolio-theme";
-const NOTIFICATION_STORAGE_KEY = "portfolio-notifications-enabled";
 
 const setTheme = function (theme) {
   root.setAttribute("data-theme", theme);
@@ -28,7 +27,7 @@ if (themeToggleBtn) {
   });
 }
 
-let notificationsEnabled = localStorage.getItem(NOTIFICATION_STORAGE_KEY) !== "false";
+let notificationsEnabled = true;
 
 const updateNotificationToggleButton = function () {
   if (!notificationToggleBtn) {
@@ -180,6 +179,45 @@ for (let i = 0; i < portfolioTabButtons.length; i++) {
   });
 }
 
+// tech stack modal variables
+const techItems = document.querySelectorAll("[data-tech-item]");
+const techModalContainer = document.querySelector("[data-tech-modal-container]");
+const techModalCloseBtn = document.querySelector("[data-tech-modal-close-btn]");
+const techOverlay = document.querySelector("[data-tech-overlay]");
+const techModalTitle = document.querySelector("[data-tech-modal-title]");
+const techModalLevel = document.querySelector("[data-tech-modal-level]");
+const techModalText = document.querySelector("[data-tech-modal-text]");
+
+const techModalFunc = function () {
+  techModalContainer.classList.toggle("active");
+  techOverlay.classList.toggle("active");
+}
+
+for (let i = 0; i < techItems.length; i++) {
+  techItems[i].setAttribute("role", "button");
+  techItems[i].setAttribute("tabindex", "0");
+
+  const openTechModal = function () {
+    techModalTitle.textContent = techItems[i].dataset.techName;
+    techModalLevel.textContent = `${techItems[i].dataset.techLevel}%`;
+    techModalText.textContent = techItems[i].dataset.techBlurb;
+    techModalFunc();
+  }
+
+  techItems[i].addEventListener("click", openTechModal);
+  techItems[i].addEventListener("keydown", function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openTechModal();
+    }
+  });
+}
+
+if (techModalCloseBtn && techOverlay) {
+  techModalCloseBtn.addEventListener("click", techModalFunc);
+  techOverlay.addEventListener("click", techModalFunc);
+}
+
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
@@ -319,7 +357,6 @@ const updateNotificationBanner = function (sectionKey) {
 if (notificationToggleBtn) {
   notificationToggleBtn.addEventListener("click", function () {
     notificationsEnabled = !notificationsEnabled;
-    localStorage.setItem(NOTIFICATION_STORAGE_KEY, notificationsEnabled);
     updateNotificationToggleButton();
 
     const activeLink = document.querySelector("[data-nav-link].active");
