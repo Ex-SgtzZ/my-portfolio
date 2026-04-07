@@ -1,6 +1,31 @@
 'use strict';
 
 
+const root = document.documentElement;
+const themeToggleBtn = document.querySelector("[data-theme-toggle]");
+const THEME_STORAGE_KEY = "portfolio-theme";
+
+const setTheme = function (theme) {
+  root.setAttribute("data-theme", theme);
+  localStorage.setItem(THEME_STORAGE_KEY, theme);
+
+  if (themeToggleBtn) {
+    themeToggleBtn.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+  }
+}
+
+const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+setTheme(savedTheme === "light" ? "light" : "dark");
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener("click", function () {
+    const currentTheme = root.getAttribute("data-theme");
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+  });
+}
+
+
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
