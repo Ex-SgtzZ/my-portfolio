@@ -5,7 +5,6 @@ const root = document.documentElement;
 const themeToggleBtn = document.querySelector("[data-theme-toggle]");
 const notificationToggleBtn = document.querySelector("[data-notification-toggle]");
 const THEME_STORAGE_KEY = "portfolio-theme";
-const NOTIFICATION_STORAGE_KEY = "portfolio-notifications-enabled";
 
 const setTheme = function (theme) {
   root.setAttribute("data-theme", theme);
@@ -28,7 +27,7 @@ if (themeToggleBtn) {
   });
 }
 
-let notificationsEnabled = localStorage.getItem(NOTIFICATION_STORAGE_KEY) !== "false";
+let notificationsEnabled = true;
 
 const updateNotificationToggleButton = function () {
   if (!notificationToggleBtn) {
@@ -358,7 +357,6 @@ const updateNotificationBanner = function (sectionKey) {
 if (notificationToggleBtn) {
   notificationToggleBtn.addEventListener("click", function () {
     notificationsEnabled = !notificationsEnabled;
-    localStorage.setItem(NOTIFICATION_STORAGE_KEY, notificationsEnabled);
     updateNotificationToggleButton();
 
     const activeLink = document.querySelector("[data-nav-link].active");
