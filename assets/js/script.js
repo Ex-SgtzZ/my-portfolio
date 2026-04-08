@@ -307,7 +307,7 @@ const notificationBannerText = document.querySelector("[data-notification-text]"
 
 const sectionNotifications = {
   about: {
-    enabled: true,
+    enabled: false,
     message: "About section updated",
     lastUpdated: "April 7, 2026"
   },

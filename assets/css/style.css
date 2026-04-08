@@ -1430,7 +1430,7 @@ html[data-theme="light"] .tech-stack::before {
 
 html[data-theme="light"] .tech-stack-title,
 html[data-theme="light"] .tech-stack-subtitle {
-  color: hsl(0, 68%, 18%);
+  color: rgb(0, 68%, 18%);
 }
 
 html[data-theme="light"] .blog-spotlight-stats li {
