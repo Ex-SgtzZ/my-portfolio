@@ -1,5 +1,5 @@
 import { createServer } from 'node:http';
-import { readFile } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { extname, join, normalize } from 'node:path';
 import { chromium } from 'playwright';
@@ -53,22 +53,17 @@ const server = createServer(async (req, res) => {
 });
 
 const saveScreenshots = async () => {
+  await mkdir(OUTPUT_DIR, { recursive: true });
   const browser = await chromium.launch({ headless: true });
 
   try {
-    const page = await browser.newPage({ viewport: { width: 1440, height: 1024 } });
-    await page.goto(`http://${HOST}:${PORT}`, { waitUntil: 'networkidle' });
-    await page.screenshot({ path: join(OUTPUT_DIR, 'about-desktop.png'), fullPage: true });
-
-    await page.getByRole('button', { name: 'Portfolio' }).click();
-    await page.waitForTimeout(300);
-    await page.screenshot({ path: join(OUTPUT_DIR, 'portfolio-desktop.png'), fullPage: true });
+    const desktop = await browser.newPage({ viewport: { width: 1440, height: 1024 } });
+    await desktop.goto(`http://${HOST}:${PORT}`, { waitUntil: 'networkidle' });
+    await desktop.screenshot({ path: join(OUTPUT_DIR, 'homepage-desktop.png'), fullPage: true });
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
     await mobile.goto(`http://${HOST}:${PORT}`, { waitUntil: 'networkidle' });
-    await mobile.getByRole('button', { name: 'Blog' }).click();
-    await mobile.waitForTimeout(300);
-    await mobile.screenshot({ path: join(OUTPUT_DIR, 'blog-mobile.png'), fullPage: true });
+    await mobile.screenshot({ path: join(OUTPUT_DIR, 'homepage-mobile.png'), fullPage: true });
   } finally {
     await browser.close();
   }
@@ -81,7 +76,7 @@ server.listen(PORT, HOST, async () => {
     process.exitCode = 0;
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    if (message.includes('Executable doesn\'t exist')) {
+    if (message.includes("Executable doesn't exist")) {
       console.warn('Playwright browser binary is unavailable in this environment. Skipping screenshot generation.');
       process.exitCode = 0;
     } else {
