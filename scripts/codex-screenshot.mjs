@@ -1,6 +1,7 @@
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { mkdir } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
 import { chromium } from 'playwright';
 
@@ -53,22 +54,23 @@ const server = createServer(async (req, res) => {
 });
 
 const saveScreenshots = async () => {
+  await mkdir(OUTPUT_DIR, { recursive: true });
   const browser = await chromium.launch({ headless: true });
 
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1024 } });
     await page.goto(`http://${HOST}:${PORT}`, { waitUntil: 'networkidle' });
-    await page.screenshot({ path: join(OUTPUT_DIR, 'about-desktop.png'), fullPage: true });
+    await page.screenshot({ path: join(OUTPUT_DIR, 'home-desktop.png'), fullPage: true });
 
-    await page.getByRole('button', { name: 'Portfolio' }).click();
+    await page.getByRole('button', { name: 'Work' }).click();
     await page.waitForTimeout(300);
-    await page.screenshot({ path: join(OUTPUT_DIR, 'portfolio-desktop.png'), fullPage: true });
+    await page.screenshot({ path: join(OUTPUT_DIR, 'work-desktop.png'), fullPage: true });
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
     await mobile.goto(`http://${HOST}:${PORT}`, { waitUntil: 'networkidle' });
-    await mobile.getByRole('button', { name: 'Blog' }).click();
+    await mobile.getByRole('button', { name: 'Contact' }).click();
     await mobile.waitForTimeout(300);
-    await mobile.screenshot({ path: join(OUTPUT_DIR, 'blog-mobile.png'), fullPage: true });
+    await mobile.screenshot({ path: join(OUTPUT_DIR, 'contact-mobile.png'), fullPage: true });
   } finally {
     await browser.close();
   }
